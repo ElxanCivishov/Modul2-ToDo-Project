@@ -132,10 +132,10 @@ ul li {
   justify-content: center;
   align-items: center;
   border-radius: 71px;
-  -webkit-border-radius:;
-  -moz-border-radius:;
-  -ms-border-radius:;
-  -o-border-radius:;
+  -webkit-border-radius: 71px;
+  -moz-border-radius: 71px;
+  -ms-border-radius: 71px;
+  -o-border-radius: 71px;
 }
 .insert-icon {
   background: #aa68fe;
