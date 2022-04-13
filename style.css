@@ -112,13 +112,20 @@
   -o-border-radius: 71px;
   margin-bottom: 19px;
 }
-
-/* .insert-list,
-ul {
+.error {
+  color: red;
+  font-size: 16px;
+  height: 20px;
+  width: 250px;
+  display: none;
+  margin: auto;
+  margin-top: 5px;
+}
+.insert-list {
   height: auto;
   display: none;
   color: black;
-} */
+}
 
 ul li {
   list-style-type: none;
