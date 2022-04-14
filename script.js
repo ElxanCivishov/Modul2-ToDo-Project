@@ -4,6 +4,7 @@ let ul = document.querySelector("ul");
 let input = document.querySelector("#textInput");
 let div = document.querySelector(".insert-list");
 // click button with keypress
+let count = 0;
 document.addEventListener("keypress", (event) => {
   if (event.key == "Enter") {
     addList(event);
@@ -19,7 +20,6 @@ function addList(event) {
   input.addEventListener("change", (event) => {
     error.style.display = "none";
   });
-
   if (input.value != "") {
     let li = document.createElement("li");
     let delbtn = document.createElement("button");
@@ -39,26 +39,26 @@ function addList(event) {
     li.append(delbtn);
     ul.append(li);
     input.value = "";
+    count++;
   } else {
     error.style.display = "block";
   }
-  div.style.display = "block";
+
+  if (ul.children.length != 0) {
+    div.style.display = "block";
+  }
 }
-// hidden div list
-// function hiddenListDiv() {
-//   if ((ul.children.length = 0)) {
-//     div.style.display = "none";
-//     console.log(ul.children.length);
-//   } else {
-//     div.style.display = "block";
-//     console.log(ul.children.length);
-//   }
-// }
+
 //delete list on click button
 ul.addEventListener("click", function (event) {
   if (event.target.className === "delete-icon-img") {
     // hiddenListDiv();
     event.target.parentElement.parentElement.remove();
+    if (ul.children.length != 0) {
+      div.style.display = "block";
+    } else {
+      div.style.display = "none";
+    }
   } else if (event.target.tagName === "LI") {
     input.value = event.target.innerText;
   }
@@ -72,6 +72,7 @@ deletebtn.addEventListener("mouseover", btnmouseOver);
 deletebtn.addEventListener("mouseout", mouseOut);
 function btnmouseOver(event) {
   event.target.src = "Img-Icon/delete-icon.png";
+  event.target.style.cursor = "pointer";
   deletebtn.removeEventListener("mouseout", btnmouseOver);
 }
 
@@ -86,9 +87,13 @@ ul.addEventListener("mouseout", mouseOut);
 function mouseOver(event) {
   if (event.target.className === "delete-icon-img") {
     event.target.src = "Img-Icon/delete-icon.png";
+    event.target.style.cursor = "pointer";
     ul.removeEventListener("mouseout", mouseOver);
   } else if (event.target.className === "list") {
     event.target.style.background = "#ffdc40";
+    event.target.style.transition = "0.4s";
+    event.target.style.fontSize = "17px";
+    event.target.style.fontWeight = "700";
     ul.removeEventListener("mouseout", mouseOver);
   }
 }
@@ -99,6 +104,8 @@ function mouseOut(event) {
     ul.removeEventListener("mouseover", mouseOut);
   } else if (event.target.className === "list") {
     event.target.style.background = "white";
+    event.target.style.fontSize = "14px";
+    event.target.style.fontWeight = "400";
     ul.removeEventListener("mouseover", mouseOut);
   }
 }
@@ -106,6 +113,15 @@ function mouseOut(event) {
 
 let sortDiv = document.querySelector(".sort-icon");
 sortDiv.addEventListener("click", sortList);
+
+// sort button mouseover and mouse out
+sortDiv.addEventListener("mouseover", (event) => {
+  if (event.target.id === "sort-icon-img") {
+    event.target.style.cursor = "pointer";
+  }
+});
+
+//
 function sortList(event) {
   if (event.target.id === "sort-icon-img") {
     if (ul.children.length != 0) {
@@ -115,7 +131,6 @@ function sortList(event) {
       }
       event.target.src = "Img-Icon/sort-down.png";
       newDAta.sort();
-      console.log(newDAta);
       for (let i = 0; i < ul.children.length; i++) {
         ul.children[i].childNodes[0].textContent = newDAta[i];
       }
@@ -133,7 +148,6 @@ function descSortList(event) {
       }
       event.target.src = "Img-Icon/sort-up.png";
       newDAta.sort().reverse();
-      console.log(newDAta);
       for (let i = 0; i < ul.children.length; i++) {
         ul.children[i].childNodes[0].textContent = newDAta[i];
       }
