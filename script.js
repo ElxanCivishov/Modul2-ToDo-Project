@@ -3,6 +3,8 @@ let data = [];
 let ul = document.querySelector("ul");
 let input = document.querySelector("#textInput");
 let div = document.querySelector(".insert-list");
+
+let sortDiv = document.querySelector(".sort-icon");
 // click button with keypress
 let count = 0;
 document.addEventListener("keypress", (event) => {
@@ -58,6 +60,7 @@ ul.addEventListener("click", function (event) {
       div.style.display = "block";
     } else {
       div.style.display = "none";
+      sortDiv.firstElementChild.src = "Img-Icon/sort-down-opocity.png";
     }
   } else if (event.target.tagName === "LI") {
     input.value = event.target.innerText;
@@ -111,7 +114,6 @@ function mouseOut(event) {
 }
 //sort button
 
-let sortDiv = document.querySelector(".sort-icon");
 sortDiv.addEventListener("click", sortList);
 
 // sort button mouseover and mouse out
