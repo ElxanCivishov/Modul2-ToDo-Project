@@ -23,6 +23,7 @@ function addList(event) {
     error.style.display = "none";
   });
   if (input.value != "") {
+    error.style.display = "none";
     let li = document.createElement("li");
     let delbtn = document.createElement("button");
     let divImg = document.createElement("img");
