@@ -1,5 +1,5 @@
 # Modul2-ToDo-Project
-
+# Deployed in netlify : https://to-do-proje.netlify.app/
 Modul 2. Layihə "Task Tracker proqramının tərtibatı".
 
 Mətn formatında olan kiçik tapşırıqları qeyd etmək üçün olab Task Tracker proqramlarını hazırlayın. Proqram siyahıya tapşırıqları əlavə etmək, dəyişdirmək və silmək, həmçinin əlifba sırası ilə sıralamaq qabiliyyətini dəstəkləməlidir.
